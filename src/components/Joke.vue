@@ -8,13 +8,18 @@
       </div>
     </div>
     <div class="joke-tag">{{category}}</div>
-    <div class="like-btn-container"></div>
+    <div class="like-btn-container"><LikeButton :id="id" /></div>
   </div>
 </template>
 
 <script>
+import LikeButton from './LikeButton.vue';
+
 export default {
   name: 'Joke',
+  components: {
+    LikeButton
+  },
   props: {
     id: Number,
     type: String,
@@ -41,16 +46,23 @@ export default {
 }
 
 .joke-text {
+  grid-area: text;
   display: block;
   line-height: 1.5em;
 }
 
 .joke-tag {
+  align-self: center;
   background-color: #d1d8e0;
   color: #778ca3;
   display: inline-block;
   font-size: .7em;
   margin: 1vh 0;
   padding: 0.3em;
+}
+
+.like-btn-container {
+  text-align: end;
+  margin: 1vh 0;
 }
 </style>
