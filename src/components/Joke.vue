@@ -1,3 +1,4 @@
+// * Компонент карточки анекдота
 <template>
   <div class="joke-container">
     <div class="joke-text">
