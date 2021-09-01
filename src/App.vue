@@ -1,9 +1,9 @@
 <template>
   <div class="main-container">
     <div>
-      <input type="text" v-model='keyword'>
+      <input class="keyword-input" type="text" placeholder="Search" v-model='keyword'>
     </div>
-    <div v-if="isLoaded">
+    <div class="jokes-container" v-if="isLoaded">
       <Joke v-for="joke in filteredJokes"
             :key="joke.id"
             :id="joke.id"
@@ -31,6 +31,7 @@ export default {
     Joke
   },
   methods: {
+    // * Запрос на сервер с необходимыми параметрами и дальнейшее получение ответа
     apiFetch: function() {
       fetch('https://v2.jokeapi.dev/joke/Any?amount=10')
         .then(response => response.json())
@@ -40,6 +41,7 @@ export default {
                        this.isLoaded = true})
         .catch(error => console.log(error));
     },
+    // * Фильтр результатов ответа сервера по необходимому ключевому слову/словам
     filterJoke: function(joke) {
       if (joke.type === 'single') {
         return joke.joke.includes(this.keyword);
@@ -61,6 +63,7 @@ export default {
     this.apiFetch();
   },
   computed: {
+    // * Фильтрация массива анекдотов по условию в функции filterJoke()
     filteredJokes() {
       return this.jokes.filter(joke => this.filterJoke(joke))
     }
@@ -71,7 +74,8 @@ export default {
 <style>
 .main-container {
   color: #4b6584;
-  margin: 10% auto;
+  margin: 2% auto;
+  transition: .3s linear;
   height: 100%;
   width: 50vw;
 
@@ -84,5 +88,42 @@ export default {
   display: flex;
   justify-content: center;
   height: 50vh;
+}
+
+.jokes-container {
+  transition: .3s linear;
+}
+
+.keyword-input {
+  border: none;
+  border-bottom: 1px solid #d1d8e0;
+  font-size: 1.3em;
+  line-height: 3em;
+  margin: 5vh 5vw;
+  outline: none;
+  padding: 0 5vw;
+  transition: .3s linear;
+  width: 60%;
+}
+
+.keyword-input:hover {
+  border-bottom: 1px solid #a5b1c2;
+}
+
+.keyword-input:hover::placeholder {
+  color: #a5b1c2;
+}
+
+.keyword-input:focus {
+  border-bottom: 1px solid #4b6584;
+}
+
+.keyword-input::placeholder {
+  color: #d1d8e0;
+  transition: .3s linear;
+}
+
+.keyword-input:focus::placeholder {
+  color: #4b6584;
 }
 </style>
