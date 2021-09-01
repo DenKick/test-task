@@ -42,7 +42,7 @@ export default {
 
 .joke-text {
   display: block;
-  margin: 0.5vh 0;
+  line-height: 1.5em;
 }
 
 .joke-tag {
