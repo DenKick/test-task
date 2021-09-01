@@ -91,7 +91,7 @@ export default {
 }
 
 .jokes-container {
-  transition: .3s linear;
+  transition: .3s
 }
 
 .keyword-input {
