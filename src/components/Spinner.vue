@@ -1,3 +1,4 @@
+// * Простой компонент для отображение загрузки
 <template>
   <div class="spinner"></div>
 </template>
