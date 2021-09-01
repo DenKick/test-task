@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .joke-container {
-  border: 1px solid #fff;
+  border: 1px solid #d1d8e0;
   border-radius: 10px;
   margin: 4vh 0;
   padding: 5vh 5vw;
