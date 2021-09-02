@@ -126,4 +126,14 @@ export default {
 .keyword-input:focus::placeholder {
   color: #4b6584;
 }
+
+@media (max-width: 800px) {
+  .main-container {
+    width: 80vw;
+  }
+
+  .keyword-input {
+    width: 75%;
+  }
+}
 </style>
